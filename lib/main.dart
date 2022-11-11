@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/row_column.dart';
 import 'my-container.dart';
+import 'my_flexible.dart';
 import 'package:flutter/rendering.dart' show debugPaintSizeEnabled; //отслеживание границ
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Quiz App',
       theme: ThemeData(primarySwatch: Colors.amber),
-      home: MyContainerImage()//MyContainer() //MyRowColumn()//HomePage(),
+      home: MyFlexMultiple()//MyFlexTextIconPic()//MyFlex()//MyContainerImage()//MyContainer() //MyRowColumn()//HomePage(),
     );
   }
 }
