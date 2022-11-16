@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pages/home_page.dart';
+
 //import 'package:quiz/row_column.dart';
 //import 'my-container.dart';
 //import 'my_flexible.dart';
@@ -16,10 +17,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Quiz App',
-      theme: ThemeData(primarySwatch: Colors.deepPurple), //Colors.amber
-      home: HomePage(), //PersonWidget(), //MyFlexMultiple()//MyFlexTextIconPic()//MyFlex()//MyContainerImage()//MyContainer() //MyRowColumn()//
+      theme: ThemeData(
+          primarySwatch: Colors.indigo,
+          textTheme: TextTheme(
+            caption: TextStyle(
+              fontSize: 22.0,
+              color: Colors.white,
+            ),
+          ),
+        fontFamily: 'Georgia',
+      ),
+      home:
+          HomePage(), //PersonWidget(), //MyFlexMultiple()//MyFlexTextIconPic()//MyFlex()//MyContainerImage()//MyContainer() //MyRowColumn()//
     );
   }
 }
-
-

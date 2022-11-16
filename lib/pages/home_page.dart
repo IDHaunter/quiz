@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/models/question.dart';
+import 'package:quiz/widgets/answer.dart';
 
 /*class HomePage extends StatelessWidget {
   @override
@@ -38,29 +39,26 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Тестирование'),
       ),
-      body: Center(
+      body: Container(
+        constraints: const BoxConstraints.expand(),
+        decoration: BoxDecoration(
+            color: Color(0xff2a375a),
+            image: DecorationImage(
+              image: AssetImage('assets/images/bg_tr.png'),
+              fit: BoxFit.fitWidth,
+            )),
         child: Column(
           children: <Widget>[
             Container(
               padding: EdgeInsets.all(10.0),
-              child: Text('Вопрос!'),
+              child: Text(data.questions[_questionIndex].title,
+              style: Theme.of(context).textTheme.caption,),
             ),
-            Container(
-              padding: EdgeInsets.all(10.0),
-              child: Text('Ответ 1'),
-            ),
-            Container(
-              padding: EdgeInsets.all(10.0),
-              child: Text('Ответ 2'),
-            ),
-            Container(
-              padding: EdgeInsets.all(10.0),
-              child: Text('Ответ 3'),
-            ),
-            Container(
-              padding: EdgeInsets.all(10.0),
-              child: Text('Ответ 4'),
-            ),
+            ...data.questions[_questionIndex].answers.map(
+                    (value) => Answer(title: value['answer'], )
+            ).toList(),
+
+            ElevatedButton(onPressed: () => setState(()=>_questionIndex++), child: Text('Ответить позже'))
           ],
         ),
       ),
