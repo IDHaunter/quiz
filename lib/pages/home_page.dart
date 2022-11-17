@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz/models/question.dart';
 import 'package:quiz/widgets/answer.dart';
 import 'package:quiz/widgets/progress_bar.dart';
+import 'package:quiz/widgets/quiz.dart';
 
 /*class HomePage extends StatelessWidget {
   @override
@@ -72,17 +73,11 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: <Widget>[
             ProgressBar(icons: _icons, count: _questionIndex, total: data.questions.length,),
-            Container(
-              padding: EdgeInsets.all(10.0),
-              child: Text(data.questions[_questionIndex].title,
-              style: Theme.of(context).textTheme.caption,),
+            Quiz(
+              index: _questionIndex,
+              questionData: data,
+              onChangeAnswer: _onChangeAnswer,
             ),
-            ...data.questions[_questionIndex].answers.map(
-                    (value) => Answer(title: value['answer'],
-                    //передаём функцию без! скобок т.к. мы её не вызываем!
-                      onChangeAnswer: _onChangeAnswer,
-                    isCorrect: value.containsKey('isCorrect') ? true : false,)
-            ).toList(),
 
            // ElevatedButton(onPressed: () => setState(()=>_questionIndex++), child: Text('Ответить позже'))
           ],
