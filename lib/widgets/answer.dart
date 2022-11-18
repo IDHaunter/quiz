@@ -15,8 +15,8 @@ class Answer extends StatelessWidget {
       //Обернули функцию в анонимную функцию т.к. нужно еще передать параметр
       onTap: () => onChangeAnswer(isCorrect),
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+        padding: EdgeInsets.all(12),
         width: double.infinity,
         decoration: BoxDecoration(
             boxShadow: [

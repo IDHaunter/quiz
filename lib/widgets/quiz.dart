@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/pages/home_page.dart';
 import 'answer.dart';
 
 class Quiz extends StatelessWidget {
@@ -13,11 +14,15 @@ class Quiz extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          padding: EdgeInsets.all(10.0),
-          child: Text(
-            questionData.questions[index].title,
-            style: Theme.of(context).textTheme.caption,
+        DefaultTextStyle.merge(
+          style: whiteTextStyle,
+          child: Container(
+            padding: EdgeInsets.only(left: 10,top: 10,right: 10,bottom: 30),
+            child: Text(
+              questionData.questions[index].title,
+              //style: Theme.of(context).textTheme.caption,
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
         ...questionData.questions[index].answers

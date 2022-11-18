@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'pages/home_page.dart';
 
 //import 'package:quiz/row_column.dart';
@@ -19,13 +20,11 @@ class MyApp extends StatelessWidget {
       title: 'Quiz App',
       theme: ThemeData(
           primarySwatch: Colors.indigo,
-          textTheme: TextTheme(
-            caption: TextStyle(
-              fontSize: 22.0,
-              color: Colors.white,
-            ),
+          textTheme: GoogleFonts.oldStandardTtTextTheme(
+            Theme.of(context).textTheme,
           ),
-        fontFamily: 'Georgia',
+          //TextTheme( caption: TextStyle( fontSize: 22.0, color: Colors.white, ),),
+          //fontFamily: 'Georgia',
       ),
       home:
           HomePage(), //PersonWidget(), //MyFlexMultiple()//MyFlexTextIconPic()//MyFlex()//MyContainerImage()//MyContainer() //MyRowColumn()//
