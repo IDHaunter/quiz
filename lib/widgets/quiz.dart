@@ -15,7 +15,7 @@ class Quiz extends StatelessWidget {
     return Column(
       children: [
         DefaultTextStyle.merge(
-          style: whiteTextStyle,
+          style: whiteTextStyleBig,
           child: Container(
             padding: EdgeInsets.only(left: 10,top: 10,right: 10,bottom: 30),
             child: Text(

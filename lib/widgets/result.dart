@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/pages/home_page.dart';
 
 class Result extends StatelessWidget {
   final int count;
@@ -48,36 +49,39 @@ class Result extends StatelessWidget {
           Color(0xFF8131FF),
         ]),
       ),
-      child: Column(
-        children: [
-          Container(
-            width: 272,
-            height: 150,
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: img,
+      child: DefaultTextStyle.merge(
+        style: whiteTextStyleLittle,
+        child: Column(
+          children: [
+            Container(
+              width: 272,
+              height: 150,
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child: img,
+              ),
             ),
-          ),
-          Container(
-            child: Text(
-              msg,
-              textAlign: TextAlign.center,
+            Container(
+              child: Text(
+                msg,
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
-          Divider(
-            color: Colors.white,
-          ),
-          Text(
-            'Верных ответов $count из $total',
-          ),
-          Divider(
-            color: Colors.white,
-          ),
-          ElevatedButton(
-            onPressed: onClearState, //без скобок значит не вызываем а просто передаём чтобы вызвать потом по нажатию
-            child: Text('Повторить тест'),
-          )
-        ],
+            Divider(
+              color: Colors.white,
+            ),
+            Text(
+              'Верных ответов $count из $total',
+            ),
+            Divider(
+              color: Colors.white,
+            ),
+            ElevatedButton(
+              onPressed: onClearState, //без скобок значит не вызываем а просто передаём чтобы вызвать потом по нажатию
+              child: Text('Повторить тест'),
+            )
+          ],
+        ),
       ),
     );
   }

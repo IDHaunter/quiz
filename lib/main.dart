@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'pages/list_page.dart';
 import 'pages/home_page.dart';
 
 //import 'package:quiz/row_column.dart';
@@ -17,17 +18,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, //отключает баннер Debug в верхнем правом углу
       title: 'Quiz App',
       theme: ThemeData(
           primarySwatch: Colors.indigo,
+          primaryColor: const Color(0xff2a375a),
           textTheme: GoogleFonts.oldStandardTtTextTheme(
             Theme.of(context).textTheme,
           ),
           //TextTheme( caption: TextStyle( fontSize: 22.0, color: Colors.white, ),),
           //fontFamily: 'Georgia',
       ),
-      home:
-          HomePage(), //PersonWidget(), //MyFlexMultiple()//MyFlexTextIconPic()//MyFlex()//MyContainerImage()//MyContainer() //MyRowColumn()//
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => HomePage(),
+        '/list_page' : (context) => ListPage(),
+      },
+      //home: HomePage(), //PersonWidget(), //MyFlexMultiple()//MyFlexTextIconPic()//MyFlex()//MyContainerImage()//MyContainer() //MyRowColumn()//
     );
   }
 }

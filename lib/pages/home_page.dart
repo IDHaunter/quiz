@@ -27,10 +27,8 @@ import 'package:quiz/widgets/result.dart';
 
 //Переменная со стилем (актуально после google fonts)
 //имея её любой виджет можно заворачивать в DefaultTextStyle.merge( любой виджет )
-final whiteTextStyle = const TextStyle(
-    color: Colors.white,
-    fontSize: 22
-);
+const whiteTextStyleBig = TextStyle(color: Colors.white, fontSize: 22);
+const whiteTextStyleLittle = TextStyle(color: Colors.white, fontSize: 14);
 
 class HomePage extends StatefulWidget {
   @override
@@ -46,10 +44,10 @@ class _HomePageState extends State<HomePage> {
 
   //Обработчик для обнуления состояний
   void _clearState() => setState(() {
-  _countResult = 0;
-  _questionIndex = 0;
-  _icons = [];
-  } );
+        _countResult = 0;
+        _questionIndex = 0;
+        _icons = [];
+      });
 
   void _onChangeAnswer(bool isCorrect) {
     setState(() {
@@ -57,7 +55,10 @@ class _HomePageState extends State<HomePage> {
         //_icons.add(Icon(Icons.brightness_1, color: Color(0xFFbd27FF),));
         _countResult++;
       } else {
-        _icons.add(Icon(Icons.ac_unit, color: Colors.deepPurple[300],));
+        _icons.add(Icon(
+          Icons.ac_unit,
+          color: Colors.deepPurple[300],
+        ));
       }
 
       _questionIndex += 1;
@@ -69,15 +70,23 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: DefaultTextStyle.merge(
-          style: whiteTextStyle,
+          style: whiteTextStyleBig,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: 20,
+                width: 44,
               ),
               Expanded(child: Text('Тестирование', textAlign: TextAlign.center)),
-              Icon(Icons.list_alt_rounded, color: Colors.white,),
+              //Icon(Icons.list_alt_rounded, color: Colors.white,),
+              IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/list_page');
+                  },
+                  icon: Icon(
+                    Icons.list_alt_rounded,
+                    color: Colors.white,
+                  )),
             ],
           ),
         ),
@@ -87,29 +96,32 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         constraints: const BoxConstraints.expand(),
         decoration: BoxDecoration(
-            color: Color(0xff2a375a),
-            image: DecorationImage(
+            color: Theme.of(context).primaryColor,
+            image: const DecorationImage(
               image: AssetImage('assets/images/bg_tr.png'),
               fit: BoxFit.fitWidth,
             )),
         child: Column(
           children: <Widget>[
-            ProgressBar(icons: _icons, count: _questionIndex, total: data.questions.length,),
+            ProgressBar(
+              icons: _icons,
+              count: _questionIndex,
+              total: data.questions.length,
+            ),
             //прямо внутри пишем код типа если то то то иначе то
-            _questionIndex < data.questions.length ?
-            Quiz(
-              index: _questionIndex,
-              questionData: data,
-              onChangeAnswer: _onChangeAnswer,
-            )
-                :
-                Result(
-                  count: _countResult,
-                  total: data.questions.length,
-                  onClearState: _clearState,
-                )
+            _questionIndex < data.questions.length
+                ? Quiz(
+                    index: _questionIndex,
+                    questionData: data,
+                    onChangeAnswer: _onChangeAnswer,
+                  )
+                : Result(
+                    count: _countResult,
+                    total: data.questions.length,
+                    onClearState: _clearState,
+                  )
 
-           // ElevatedButton(onPressed: () => setState(()=>_questionIndex++), child: Text('Ответить позже'))
+            // ElevatedButton(onPressed: () => setState(()=>_questionIndex++), child: Text('Ответить позже'))
           ],
         ),
       ),
