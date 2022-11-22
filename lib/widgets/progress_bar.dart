@@ -12,8 +12,8 @@ class ProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     iFailed = icons.length;
     return Container(
-      padding: const EdgeInsets.all(10),
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      padding: const EdgeInsets.only(left: 10, top: 15, right: 10, bottom: 0),
+      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
       child: Expanded(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class Question {
   final String title;
-  final List<Map> answers;
+  final List<Map<String, String>> answers;
 
   Question({@required this.title, @required this.answers});
 }
@@ -13,7 +13,7 @@ class QuestionData {
       {
         'answer': 'Разрешается в присутствии инженера-энергетика',
       },
-      {'answer': 'Не разрешается', 'isCorrect': 1},
+      {'answer': 'Не разрешается', 'isCorrect': '1'},
       {
         'answer': 'Разрешается ',
       },
@@ -28,7 +28,7 @@ class QuestionData {
       {
         'answer': '104',
       },
-      {'answer': '101', 'isCorrect': 1},
+      {'answer': '101', 'isCorrect': '1'},
       {
         'answer': '102',
       },
@@ -46,10 +46,10 @@ class QuestionData {
       {
         'answer': '105',
       },
-      {'answer': '103', 'isCorrect': 1},
+      {'answer': '103', 'isCorrect': '1'},
     ]),
     Question(title: 'Кто несет ответственность за обеспечение пожарной безопасности на предприятии?', answers: [
-      {'answer': 'руководитель предприятия ', 'isCorrect': 1},
+      {'answer': 'руководитель предприятия ', 'isCorrect': '1'},
       {
         'answer': 'работник',
       },
@@ -67,7 +67,7 @@ class QuestionData {
           {
             'answer': 'на усмотрение нанимателя',
           },
-          {'answer': 'не подлежат', 'isCorrect': 1},
+          {'answer': 'не подлежат', 'isCorrect': '1'},
           {
             'answer': 'подлежат',
           },
@@ -82,7 +82,7 @@ class QuestionData {
           {
             'answer': 'Изымается талон предупреждения',
           },
-          {'answer': 'Отстраняется от работы', 'isCorrect': 1},
+          {'answer': 'Отстраняется от работы', 'isCorrect': '1'},
           {
             'answer': 'Ему объявляется замечание.',
           },
@@ -97,7 +97,7 @@ class QuestionData {
           {
             'answer': 'С даты их первого применения',
           },
-          {'answer': 'Со дня их фактической выдачи работнику', 'isCorrect': 1},
+          {'answer': 'Со дня их фактической выдачи работнику', 'isCorrect': '1'},
           {
             'answer': 'С даты их изготовления',
           },
@@ -110,7 +110,7 @@ class QuestionData {
         'Кто на предприятии несет ответственность за обеспечение работающих спецодеждой?',
         answers: [
           {
-            'answer': 'наниматель', 'isCorrect': 1
+            'answer': 'наниматель', 'isCorrect': '1'
           },
           {'answer': 'профсоюз', },
           {
@@ -128,7 +128,7 @@ class QuestionData {
         'Какие органы рассматривают трудовые споры?',
         answers: [
           {
-            'answer': 'комиссия по трудовым спорам предприятия, народный суд', 'isCorrect': 1
+            'answer': 'комиссия по трудовым спорам предприятия, народный суд', 'isCorrect': '1'
           },
           {'answer': 'юридическая служба предприятия', },
           {
@@ -148,7 +148,7 @@ class QuestionData {
           {
             'answer': 'выполнить искусственное дыхание',
           },
-          {'answer': 'следует отключить ту часть установки, которая касается пострадавшего', 'isCorrect': 1},
+          {'answer': 'следует отключить ту часть установки, которая касается пострадавшего', 'isCorrect': '1'},
           {
             'answer': 'выполнить непрямой массаж сердца',
           },
@@ -166,7 +166,7 @@ class QuestionData {
           {
             'answer': 'лишение премии',
           },
-          {'answer': 'предупреждение, наложение штрафа', 'isCorrect': 1},
+          {'answer': 'предупреждение, наложение штрафа', 'isCorrect': '1'},
           {
             'answer': 'выговор',
           },
@@ -181,7 +181,7 @@ class QuestionData {
           {
             'answer': 'предупреждение, наложение штрафа',
           },
-          {'answer': 'замечание, выговор, увольнение, лишение премии', 'isCorrect': 1},
+          {'answer': 'замечание, выговор, увольнение, лишение премии', 'isCorrect': '1'},
           {
             'answer': 'перенос отпуска на зимний период',
           },
@@ -201,7 +201,7 @@ class QuestionData {
             'answer': 'разбить стекло, нажать кнопку и сказать свою фамилию',
           },
           {
-            'answer': 'разбить стекло, нажать кнопку и отпустить, ждать гудка', 'isCorrect': 1
+            'answer': 'разбить стекло, нажать кнопку и отпустить, ждать гудка', 'isCorrect': '1'
           },
         ]),
     Question(
@@ -216,7 +216,7 @@ class QuestionData {
             'answer': 'пожарный извещатель',
           },
           {
-            'answer': 'огнетушители, ящики с песком, кошма, бочка с водой', 'isCorrect': 1
+            'answer': 'огнетушители, ящики с песком, кошма, бочка с водой', 'isCorrect': '1'
           },
         ]),
     Question(
@@ -231,7 +231,7 @@ class QuestionData {
             'answer': 'Разрешается',
           },
           {
-            'answer': 'запрещается', 'isCorrect': 1
+            'answer': 'запрещается', 'isCorrect': '1'
           },
         ]),
     Question(
@@ -246,7 +246,7 @@ class QuestionData {
             'answer': 'вторую',
           },
           {
-            'answer': 'первую', 'isCorrect': 1
+            'answer': 'первую', 'isCorrect': '1'
           },
           {
             'answer': 'пятую',
@@ -254,7 +254,7 @@ class QuestionData {
         ])
   ];
 
-  List<Question> get questions => [..._data];
+  List<Question> get getQuestions => [..._data];
 //List<Question> get question { return _data; }
 
 }

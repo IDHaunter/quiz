@@ -28,6 +28,7 @@ import 'package:quiz/widgets/result.dart';
 //Переменная со стилем (актуально после google fonts)
 //имея её любой виджет можно заворачивать в DefaultTextStyle.merge( любой виджет )
 const whiteTextStyleBig = TextStyle(color: Colors.white, fontSize: 22);
+const whiteTextStyleNormal = TextStyle(color: Colors.white, fontSize: 20);
 const whiteTextStyleLittle = TextStyle(color: Colors.white, fontSize: 14);
 
 class HomePage extends StatefulWidget {
@@ -106,10 +107,10 @@ class _HomePageState extends State<HomePage> {
             ProgressBar(
               icons: _icons,
               count: _questionIndex,
-              total: data.questions.length,
+              total: data.getQuestions.length,
             ),
             //прямо внутри пишем код типа если то то то иначе то
-            _questionIndex < data.questions.length
+            _questionIndex < data.getQuestions.length
                 ? Quiz(
                     index: _questionIndex,
                     questionData: data,
@@ -117,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                   )
                 : Result(
                     count: _countResult,
-                    total: data.questions.length,
+                    total: data.getQuestions.length,
                     onClearState: _clearState,
                   )
 

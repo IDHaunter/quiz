@@ -15,9 +15,9 @@ class _ListPageState extends State<ListPage> {
 
   @override
   Widget build(BuildContext context) {
-    for (int i = 0; i < (_questionData.questions.length); i++) {
+    for (int i = 0; i < (_questionData.getQuestions.length); i++) {
       listQuestion
-          .add(DefaultTextStyle.merge(style: whiteTextStyleLittle, child: Text(_questionData.questions[i].title)));
+          .add(DefaultTextStyle.merge(style: whiteTextStyleLittle, child: Text(_questionData.getQuestions[i].title)));
     }
 
     return Scaffold(
