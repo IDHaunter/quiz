@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quiz/pages/answers_page.dart';
 import 'pages/list_page.dart';
 import 'pages/home_page.dart';
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/' : (context) => HomePage(),
         '/list_page' : (context) => ListPage(),
+        '/answers_page' : (context) => AnswersPage(),
       },
       //home: HomePage(), //PersonWidget(), //MyFlexMultiple()//MyFlexTextIconPic()//MyFlex()//MyContainerImage()//MyContainer() //MyRowColumn()//
     );

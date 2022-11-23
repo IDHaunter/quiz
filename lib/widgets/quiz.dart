@@ -50,9 +50,6 @@ class Quiz extends StatelessWidget {
         List<Widget> listQuizLeft = [];
         List<Widget> listQuizRight = [];
         Map<String, String> myMap = {};
-        int answerCount = 0;
-
-        answerCount = questionData.getQuestions[index].answers.length;
 
         //listQuizLeft.add(Answer(title: 'new title', isCorrect: false, onChangeAnswer: onChangeAnswer, needHeight: 50, needWidth: 100, ));
         final double d = MediaQuery.of(context).size.height;

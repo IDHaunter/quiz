@@ -1,6 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/models/question.dart';
 import 'home_page.dart';
+import 'answers_page.dart';
+
+class RowQuestion extends StatefulWidget {
+  //const RowQuestion({Key? key}) : super(key: key);
+  final int index;
+  final String caption;
+  final List<Map<String, String>> answers;
+
+  RowQuestion({@required this.index, @required this.caption, @required this.answers, Key key}) : super(key: key);
+
+  @override
+  State<RowQuestion> createState() => _RowQuestionState();
+}
+
+class _RowQuestionState extends State<RowQuestion> {
+  @override
+  Widget build(BuildContext context) {
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Flexible(
+          fit: FlexFit.tight, //tight - на всё пространство элемента
+          child: Container(
+            padding: const EdgeInsets.only(left: 15, right: 5, top: 0, bottom: 3),
+            child: Text(
+              '${widget.index + 1}. ${widget.caption}',
+              softWrap: true, //работает перенос на новую строку
+              overflow: TextOverflow.fade, //при переполнении текст будет таять
+            ),
+          ),
+        ),
+        IconButton(
+          onPressed:
+              () {
+           // Navigator.pushNamed(context, '/answers_page');
+            Navigator.push(context, MaterialPageRoute(builder: (context) => AnswersPage(answerCaption: widget.caption,answers: widget.answers,) ),);
+          },
+          icon: const Icon(
+            Icons.question_mark,
+            color: Colors.white,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 
 class ListPage extends StatefulWidget {
   //const ListPage({Key? key}) : super(key: key);
@@ -12,12 +60,14 @@ class ListPage extends StatefulWidget {
 class _ListPageState extends State<ListPage> {
   final QuestionData _questionData = QuestionData();
   List<Widget> listQuestion = [];
+  //String s = 'default text';
 
   @override
   Widget build(BuildContext context) {
     for (int i = 0; i < (_questionData.getQuestions.length); i++) {
-      listQuestion
-          .add(DefaultTextStyle.merge(style: whiteTextStyleLittle, child: Text(_questionData.getQuestions[i].title)));
+      listQuestion.add(DefaultTextStyle.merge(
+          style: whiteTextStyleLittle,
+          child: RowQuestion(index: i, caption: _questionData.getQuestions[i].title, answers: [... _questionData.getQuestions[i].answers ],)));
     }
 
     return Scaffold(
@@ -38,6 +88,7 @@ class _ListPageState extends State<ListPage> {
       body: Container(
           color: Theme.of(context).primaryColor,
           child: ListView(
+            itemExtent: 60,
             children: listQuestion,
           )),
     );

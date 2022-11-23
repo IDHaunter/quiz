@@ -29,6 +29,7 @@ import 'package:quiz/widgets/result.dart';
 //имея её любой виджет можно заворачивать в DefaultTextStyle.merge( любой виджет )
 const whiteTextStyleBig = TextStyle(color: Colors.white, fontSize: 22);
 const whiteTextStyleNormal = TextStyle(color: Colors.white, fontSize: 20);
+const purpleTextStyleNormal = TextStyle(color: Color(0xfff4b3ff), fontSize: 20);
 const whiteTextStyleLittle = TextStyle(color: Colors.white, fontSize: 14);
 
 class HomePage extends StatefulWidget {

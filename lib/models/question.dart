@@ -8,7 +8,7 @@ class Question {
 }
 
 class QuestionData {
-  final _data = [
+  final List<Question> _data = [
     Question(title: 'Разрешается ли работнику  заменить перегоревшую лампу в настольном светильнике?', answers: [
       {
         'answer': 'Разрешается в присутствии инженера-энергетика',
