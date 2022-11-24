@@ -20,7 +20,7 @@ class ProgressBar extends StatelessWidget {
           children: [
             FittedBox(
               fit: BoxFit.contain,
-              child: Text('Выполнено $count из $total',style: TextStyle(color: Colors.deepPurple[100])),
+              child: Text('Вопрос ${count+1} из $total',style: TextStyle(color: Colors.deepPurple[100])),
             ),
             SizedBox(
               width: 10,

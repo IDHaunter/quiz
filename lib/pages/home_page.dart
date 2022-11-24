@@ -76,9 +76,18 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 44,
-              ),
+              // SizedBox(
+              //   width: 44,
+              // ),
+              IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/info_page');
+                  },
+                  icon: Icon(
+                    Icons.info_outline,
+                    color: Colors.white,
+                  )),
+
               Expanded(child: Text('Тестирование', textAlign: TextAlign.center)),
               //Icon(Icons.list_alt_rounded, color: Colors.white,),
               IconButton(
