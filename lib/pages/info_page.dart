@@ -14,6 +14,9 @@ class InfoPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [
               Expanded(child: Text('Информация', textAlign: TextAlign.center)),
+              SizedBox(
+                width: 44,
+              ),
               //Icon(Icons.list_alt_rounded, color: Colors.white,),
             ],
           ),
@@ -51,16 +54,24 @@ class InfoPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Image( image: AssetImage('assets/images/lis_purple.png')),
+                Stack(alignment: Alignment.bottomRight, children: [
+                  Image(image: AssetImage('assets/images/lis_purple.png')),
+                  Opacity(
+                    opacity: 0.5,
+                    child: Text(
+                      'created by IDH   ',
+                      style: TextStyle(color: Colors.deepPurple[300], fontSize: 10),
+                    ),
+                  ),
+                ]),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  'created by IDHaunter', style: TextStyle(color: Colors.deepPurple[300]),
+              children: const [
+                SizedBox(
+                  width: 5, height: 5,
                 ),
-                const SizedBox(width: 5,),
               ],
             ),
           ],

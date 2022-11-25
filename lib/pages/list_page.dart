@@ -19,29 +19,42 @@ class _RowQuestionState extends State<RowQuestion> {
   @override
   Widget build(BuildContext context) {
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+    return Column(
       children: [
-        Flexible(
-          fit: FlexFit.tight, //tight - на всё пространство элемента
-          child: Container(
-            padding: const EdgeInsets.only(left: 15, right: 5, top: 0, bottom: 3),
-            child: Text(
-              '${widget.index + 1}. ${widget.caption}',
-              softWrap: true, //работает перенос на новую строку
-              overflow: TextOverflow.fade, //при переполнении текст будет таять
-            ),
+        Expanded(
+          flex: 12,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Flexible(
+                fit: FlexFit.tight, //tight - на всё пространство элемента
+                child: Container(
+                  padding: const EdgeInsets.only(left: 15, right: 5, top: 0, bottom: 3),
+                  child: Text(
+                    '${widget.index + 1}. ${widget.caption}',
+                    softWrap: true, //работает перенос на новую строку
+                    overflow: TextOverflow.fade, //при переполнении текст будет таять
+                  ),
+                ),
+              ),
+              IconButton(
+                onPressed:
+                    () {
+                 // Navigator.pushNamed(context, '/answers_page');
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AnswersPage(answerCaption: widget.caption,answers: widget.answers,) ),);
+                },
+                icon: const Icon(
+                  Icons.question_mark,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
         ),
-        IconButton(
-          onPressed:
-              () {
-           // Navigator.pushNamed(context, '/answers_page');
-            Navigator.push(context, MaterialPageRoute(builder: (context) => AnswersPage(answerCaption: widget.caption,answers: widget.answers,) ),);
-          },
-          icon: const Icon(
-            Icons.question_mark,
-            color: Colors.white,
+        Flexible(
+          child: Divider(
+            height: 2,
+            color: Colors.blueGrey[700],
           ),
         ),
       ],
@@ -88,7 +101,7 @@ class _ListPageState extends State<ListPage> {
       body: Container(
           color: Theme.of(context).primaryColor,
           child: ListView(
-            itemExtent: 60,
+            itemExtent: 65,
             children: listQuestion,
           )),
     );
