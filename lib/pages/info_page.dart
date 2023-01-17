@@ -34,11 +34,19 @@ class InfoPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
               child: const Text(
-                'Вопросы для аттестации ПУ СвязьИнформСервис, 2022 год.',
+                'Вопросы для аттестации ПУ СвязьИнформСервис, 2023 год.',
                 textAlign: TextAlign.center,
-                style: whiteTextStyleBig,
+                style: purpleTextStyleBig,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+              child: const Text(
+                'версия 1.0.0',
+                textAlign: TextAlign.center,
+                style: purpleTextStyleNormal,
               ),
             ),
             Expanded(
@@ -59,7 +67,7 @@ class InfoPage extends StatelessWidget {
                   Opacity(
                     opacity: 0.5,
                     child: Text(
-                      'created by LeeS  ',
+                      'created by IDH   ',
                       style: purpleTextStyleSmall,
                     ),
                   ),

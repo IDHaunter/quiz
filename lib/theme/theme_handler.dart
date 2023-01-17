@@ -36,6 +36,7 @@ class ThemeHandler {
 //имея её любой виджет можно заворачивать в DefaultTextStyle.merge( любой виджет )
 const whiteTextStyleBig = TextStyle(color: Colors.white, fontSize: 22);
 const whiteTextStyleNormal = TextStyle(color: Colors.white, fontSize: 20);
+const purpleTextStyleBig = TextStyle(color: Color(0xfff1d5f6), fontSize: 22);
 const purpleTextStyleNormal = TextStyle(color: Color(0xfff4b3ff), fontSize: 20);
 const purpleTextStyleSmall = TextStyle(color: Color(0xfff4b3ff), fontSize: 10);
 
