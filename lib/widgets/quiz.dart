@@ -8,13 +8,13 @@ class Quiz extends StatelessWidget {
   final QuestionData questionData;
   final Function onChangeAnswer;
 
-  Quiz({Key key, this.index, this.questionData, this.onChangeAnswer}) : super(key: key);
+  const Quiz({Key? key, required this.index, required this.questionData, required this.onChangeAnswer}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     //1 way to get screen size is using MediaQuery
     //final screenWidth = MediaQuery.of(context).size.width;
-    //final screenHeigth = MediaQuery.of(context).size.height;
+    //final screenHeight = MediaQuery.of(context).size.height;
 
     //second way is to using LayoutBuilder
     return LayoutBuilder(
@@ -38,7 +38,7 @@ class Quiz extends StatelessWidget {
                 .map((value) => Answer(
                       needWidth: double.infinity,
                       needHeight: null,
-                      title: value['answer'],
+                      title: value['answer']??'answer',
                       //передаём функцию без! скобок т.к. мы её не вызываем!
                       onChangeAnswer: onChangeAnswer,
                       isCorrect: value.containsKey('isCorrect') ? true : false,
@@ -58,7 +58,7 @@ class Quiz extends StatelessWidget {
           if (i < 3) {
             myMap = questionData.getQuestions[index].answers[i];
             listQuizLeft.add(Answer(
-              title: myMap['answer'],
+              title: myMap['answer']?? 'answer',
               isCorrect: myMap.containsKey('isCorrect') ? true : false,
               onChangeAnswer: onChangeAnswer,
               needHeight: (d ~/ 8).toDouble(), //50,
@@ -67,7 +67,7 @@ class Quiz extends StatelessWidget {
           } else {
             myMap = questionData.getQuestions[index].answers[i];
             listQuizRight.add(Answer(
-              title: myMap['answer'],
+              title: myMap['answer']??'answer',
               isCorrect: myMap.containsKey('isCorrect') ? true : false,
               onChangeAnswer: onChangeAnswer,
               needHeight: (d ~/ 8).toDouble(),

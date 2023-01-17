@@ -6,9 +6,9 @@ class Answer extends StatelessWidget {
   final bool isCorrect;
   final Function onChangeAnswer;
   final double needWidth;
-  final double needHeight;
+  final double? needHeight;
 
-  const Answer({Key key, this.title, this.isCorrect, this.onChangeAnswer, this.needWidth, this.needHeight})
+  const Answer({Key? key, required this.title, required this.isCorrect, required this.onChangeAnswer, required this.needWidth, required this.needHeight})
       : super(key: key);
 
   @override

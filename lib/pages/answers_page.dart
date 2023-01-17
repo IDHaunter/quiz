@@ -4,7 +4,7 @@ import 'home_page.dart';
 class AnswersPage extends StatelessWidget {
   final String answerCaption;
   final List<Map<String, String>> answers;
-  const AnswersPage({Key key, this.answerCaption, this.answers}) : super(key: key);
+  const AnswersPage({Key? key, required this.answerCaption, required this.answers}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class AnswersPage extends StatelessWidget {
     List<Widget> listAnswers = [DefaultTextStyle.merge(
         style: whiteTextStyleBig,
         child: Center(child: Container(
-            margin: EdgeInsets.only(top: 20, bottom: 10),
+            margin: const EdgeInsets.only(top: 20, bottom: 10),
             child: Text(answerCaption, textAlign: TextAlign.center,))))];
 
     for (int i = 0; i < (answers.length); i++) {
@@ -24,7 +24,7 @@ class AnswersPage extends StatelessWidget {
           style: myMap.containsKey('isCorrect') ? purpleTextStyleNormal : whiteTextStyleNormal,
           child: Container(
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-              child: Text(myMap['answer']))));
+              child: Text(myMap['answer'] ?? 'answer' ))));
     }
 
     return Scaffold(

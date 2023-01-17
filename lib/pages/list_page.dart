@@ -9,7 +9,7 @@ class RowQuestion extends StatefulWidget {
   final String caption;
   final List<Map<String, String>> answers;
 
-  RowQuestion({@required this.index, @required this.caption, @required this.answers, Key key}) : super(key: key);
+  const RowQuestion({required this.index, required this.caption, required this.answers, Key? key}) : super(key: key);
 
   @override
   State<RowQuestion> createState() => _RowQuestionState();
@@ -64,7 +64,7 @@ class _RowQuestionState extends State<RowQuestion> {
 
 
 class ListPage extends StatefulWidget {
-  //const ListPage({Key? key}) : super(key: key);
+  const ListPage({super.key});
 
   @override
   State<ListPage> createState() => _ListPageState();

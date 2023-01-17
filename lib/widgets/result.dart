@@ -6,9 +6,9 @@ class Result extends StatelessWidget {
   final int total;
 
   //Функция чтобы очищать состояние
-  final Function onClearState;
+  final void Function() onClearState;
 
-  Result({Key key, this.count, this.total, this.onClearState}) : super(key: key);
+  Result({Key? key, required this.count, required this.total, required this.onClearState}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

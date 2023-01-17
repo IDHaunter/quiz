@@ -35,13 +35,13 @@ class MyFlex extends StatelessWidget {
             //   child: ColorBox(),
             // ),
             //Spacer - это тот же SizedBox но с параметром flex вместо ширины
-            Spacer(
+            const Spacer(
               flex: 1,
             ),
             //Expanded это Flexible без свойства fit (оно как бы tight)
             Expanded(
-              child: ColorBox(),
               flex: 1,
+              child: ColorBox(),
             )
           ],
         ),
@@ -244,3 +244,4 @@ class MyFlexMultiple extends StatelessWidget {
     );
   }
 }
+
