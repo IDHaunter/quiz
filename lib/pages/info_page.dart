@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import '../theme/theme_handler.dart';
 
 class InfoPage extends StatelessWidget {
   const InfoPage({Key? key}) : super(key: key);
@@ -54,13 +54,13 @@ class InfoPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Stack(alignment: Alignment.bottomRight, children: [
+                Stack(alignment: Alignment.bottomRight, children: const [
                   Image(image: AssetImage('assets/images/lis_purple.png')),
                   Opacity(
                     opacity: 0.5,
                     child: Text(
-                      'created by IDH   ',
-                      style: TextStyle(color: Colors.deepPurple[300], fontSize: 10),
+                      'created by LeeS  ',
+                      style: purpleTextStyleSmall,
                     ),
                   ),
                 ]),

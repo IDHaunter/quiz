@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/models/question.dart';
-import 'package:quiz/widgets/answer.dart';
 import 'package:quiz/widgets/progress_bar.dart';
 import 'package:quiz/widgets/quiz.dart';
 import 'package:quiz/widgets/result.dart';
+import '../theme/theme_handler.dart';
 
 /*class HomePage extends StatelessWidget {
   @override
@@ -24,13 +24,6 @@ import 'package:quiz/widgets/result.dart';
 // Декларативный подход
 // UI = f (state)
 // где f - это buid методы виджетов, а state - состояние
-
-//Переменная со стилем (актуально после google fonts)
-//имея её любой виджет можно заворачивать в DefaultTextStyle.merge( любой виджет )
-const whiteTextStyleBig = TextStyle(color: Colors.white, fontSize: 22);
-const whiteTextStyleNormal = TextStyle(color: Colors.white, fontSize: 20);
-const purpleTextStyleNormal = TextStyle(color: Color(0xfff4b3ff), fontSize: 20);
-const whiteTextStyleLittle = TextStyle(color: Colors.white, fontSize: 14);
 
 class HomePage extends StatefulWidget {
   @override
@@ -59,7 +52,7 @@ class _HomePageState extends State<HomePage> {
       } else {
         _icons.add(Icon(
           Icons.ac_unit,
-          color: Colors.deepPurple[300],
+          color: themeHandler.accentIconColor,
         ));
       }
 
@@ -83,18 +76,18 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     Navigator.pushNamed(context, '/info_page');
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.info_outline,
                     color: Colors.white,
                   )),
 
-              Expanded(child: Text('Тестирование', textAlign: TextAlign.center)),
+              const Expanded(child: Text('Тестирование', textAlign: TextAlign.center)),
               //Icon(Icons.list_alt_rounded, color: Colors.white,),
               IconButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/list_page');
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.list_alt_rounded,
                     color: Colors.white,
                   )),

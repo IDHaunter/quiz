@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz/pages/info_page.dart';
+import 'package:quiz/theme/theme_handler.dart';
 import 'pages/list_page.dart';
 import 'pages/home_page.dart';
 
@@ -24,8 +25,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, //отключает баннер Debug в верхнем правом углу
       title: 'Quiz App',
       theme: ThemeData(
-          primarySwatch: Colors.indigo,
-          primaryColor: const Color(0xff2a375a),
+          primarySwatch: ThemeHandler.primarySwatchColor,
+          primaryColor: ThemeHandler.primaryColor,
           textTheme: GoogleFonts.oldStandardTtTextTheme(
             Theme.of(context).textTheme,
           ),

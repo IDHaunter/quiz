@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/models/question.dart';
-import 'home_page.dart';
+import '../theme/theme_handler.dart';
 import 'answers_page.dart';
 
 class RowQuestion extends StatefulWidget {
-  //const RowQuestion({Key? key}) : super(key: key);
   final int index;
   final String caption;
   final List<Map<String, String>> answers;
@@ -45,7 +44,7 @@ class _RowQuestionState extends State<RowQuestion> {
                 },
                 icon: const Icon(
                   Icons.question_mark,
-                  color: Colors.white,
+                  color: ThemeHandler.mainIconColor,
                 ),
               ),
             ],
@@ -54,7 +53,7 @@ class _RowQuestionState extends State<RowQuestion> {
         Flexible(
           child: Divider(
             height: 2,
-            color: Colors.blueGrey[700],
+            color: themeHandler.dividerColor,
           ),
         ),
       ],
