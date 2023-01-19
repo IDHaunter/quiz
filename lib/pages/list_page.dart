@@ -17,7 +17,6 @@ class RowQuestion extends StatefulWidget {
 class _RowQuestionState extends State<RowQuestion> {
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
         Expanded(
@@ -37,10 +36,16 @@ class _RowQuestionState extends State<RowQuestion> {
                 ),
               ),
               IconButton(
-                onPressed:
-                    () {
-                 // Navigator.pushNamed(context, '/answers_page');
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AnswersPage(answerCaption: widget.caption,answers: widget.answers,) ),);
+                onPressed: () {
+                  // Navigator.pushNamed(context, '/answers_page');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AnswersPage(
+                              answerCaption: widget.caption,
+                              answers: widget.answers,
+                            )),
+                  );
                 },
                 icon: const Icon(
                   Icons.question_mark,
@@ -61,7 +66,6 @@ class _RowQuestionState extends State<RowQuestion> {
   }
 }
 
-
 class ListPage extends StatefulWidget {
   const ListPage({super.key});
 
@@ -72,6 +76,7 @@ class ListPage extends StatefulWidget {
 class _ListPageState extends State<ListPage> {
   final QuestionData _questionData = QuestionData();
   List<Widget> listQuestion = [];
+
   //String s = 'default text';
 
   @override
@@ -79,7 +84,11 @@ class _ListPageState extends State<ListPage> {
     for (int i = 0; i < (_questionData.getQuestions.length); i++) {
       listQuestion.add(DefaultTextStyle.merge(
           style: whiteTextStyleLittle,
-          child: RowQuestion(index: i, caption: _questionData.getQuestions[i].title, answers: [... _questionData.getQuestions[i].answers ],)));
+          child: RowQuestion(
+            index: i,
+            caption: _questionData.getQuestions[i].title,
+            answers: [..._questionData.getQuestions[i].answers],
+          )));
     }
 
     return Scaffold(
@@ -88,10 +97,19 @@ class _ListPageState extends State<ListPage> {
           style: whiteTextStyleBig,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: const [
-              Expanded(child: Text('Список всех вопросов', textAlign: TextAlign.center)),
-              SizedBox(
-                width: 44,
+            children: [
+              const Expanded(child: Text('Список всех вопросов', textAlign: TextAlign.center)),
+              IconButton(
+                onPressed: () {
+                  showSearch(context: context, delegate: CustomSearchDelegate());
+                },
+                icon: const Icon(
+                  Icons.search,
+                  color: ThemeHandler.mainIconColor,
+                ),
+              ),
+              const SizedBox(
+                width: 5,
               ),
             ],
           ),
@@ -103,6 +121,108 @@ class _ListPageState extends State<ListPage> {
             itemExtent: 65,
             children: listQuestion,
           )),
+    );
+  }
+}
+
+class CustomSearchDelegate extends SearchDelegate {
+  List<String> searchTerms = [
+    'Apple',
+    'Banana',
+    'Pear',
+    'Watermelons',
+    'Oranges',
+    'Blueberries',
+    'Strawberries',
+    'Raspberries',
+  ];
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    //return Theme.of(context);
+    return ThemeData(
+      textTheme: const TextTheme(
+        // текст запроса
+        headline6: whiteTextStyleNormal,
+      ),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: ThemeHandler.primarySwatchColor,
+      ),
+      inputDecorationTheme: const InputDecorationTheme(
+        border: InputBorder.none,
+
+        // подсказка текста запроса
+        hintStyle: hintTextStyleNormal,
+      ),
+      backgroundColor:ThemeHandler.primaryColor,
+      scaffoldBackgroundColor:ThemeHandler.primaryColor,
+    );
+  }
+
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    // TODO: список действий в конце панели (в нашем случае очистка фильтра)
+    return [
+      IconButton(
+          onPressed: () {
+            query = '';
+          },
+          icon: const Icon(Icons.clear))
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    // TODO: список действий вначале панели
+    return IconButton(
+        onPressed: () {
+          close(context, null);
+        },
+        icon: const Icon(Icons.arrow_back));
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // TODO: результаты поиска и сам цикл поиска с учётом фильтра query
+    List<String> matchQuery = [];
+    for (var fruit in searchTerms) {
+      if (fruit.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(fruit);
+      }
+    }
+    return Container(
+        color: ThemeHandler.primaryColor,
+        child: ListView.builder(
+            itemCount: matchQuery.length,
+            itemBuilder: (context, index) {
+              var result = matchQuery[index];
+              return ListTile(
+
+                title: Text(result, style: whiteTextStyleLittle),
+              );
+            }),
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // TODO: результаты по предложениям (аналогично buildResults)
+    List<String> matchQuery = [];
+    for (var fruit in searchTerms) {
+      if (fruit.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(fruit);
+      }
+    }
+    return Container(
+        color: ThemeHandler.primaryColor,
+        child: ListView.builder(
+            itemCount: matchQuery.length,
+            itemBuilder: (context, index) {
+              var result = matchQuery[index];
+              return ListTile(
+                title: Text(result, style: whiteTextStyleLittle),
+              );
+            }),
     );
   }
 }
