@@ -3,18 +3,13 @@ import 'package:quiz/models/question.dart';
 import '../theme/theme_handler.dart';
 import 'answers_page.dart';
 
-class RowQuestion extends StatefulWidget {
+class RowQuestion extends StatelessWidget {
   final int index;
   final String caption;
   final List<Map<String, String>> answers;
 
   const RowQuestion({required this.index, required this.caption, required this.answers, Key? key}) : super(key: key);
 
-  @override
-  State<RowQuestion> createState() => _RowQuestionState();
-}
-
-class _RowQuestionState extends State<RowQuestion> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,7 +24,7 @@ class _RowQuestionState extends State<RowQuestion> {
                 child: Container(
                   padding: const EdgeInsets.only(left: 15, right: 5, top: 0, bottom: 3),
                   child: Text(
-                    '${widget.index + 1}. ${widget.caption}',
+                    '${index + 1}. $caption',
                     softWrap: true, //работает перенос на новую строку
                     overflow: TextOverflow.fade, //при переполнении текст будет таять
                   ),
@@ -42,8 +37,8 @@ class _RowQuestionState extends State<RowQuestion> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => AnswersPage(
-                              answerCaption: widget.caption,
-                              answers: widget.answers,
+                              answerCaption: caption,
+                              answers: answers,
                             )),
                   );
                 },
@@ -126,38 +121,39 @@ class _ListPageState extends State<ListPage> {
 }
 
 class CustomSearchDelegate extends SearchDelegate {
-  List<String> searchTerms = [
-    'Apple',
-    'Banana',
-    'Pear',
-    'Watermelons',
-    'Oranges',
-    'Blueberries',
-    'Strawberries',
-    'Raspberries',
-  ];
+  // List<String> searchTerms = [
+  //   'Apple',
+  //   'Banana',
+  //   'Pear',
+  //   'Watermelons',
+  //   'Oranges',
+  //   'Blueberries',
+  //   'Strawberries',
+  //   'Raspberries',
+  // ];
+
+  final QuestionData _questionData = QuestionData();
 
   @override
   ThemeData appBarTheme(BuildContext context) {
     //return Theme.of(context);
     return ThemeData(
-      textTheme: const TextTheme(
-        // текст запроса
-        headline6: whiteTextStyleNormal,
-      ),
+      textTheme: Theme.of(context).textTheme.copyWith(headline6: whiteTextStyleNormal),
       appBarTheme: const AppBarTheme(
         backgroundColor: ThemeHandler.primarySwatchColor,
       ),
       inputDecorationTheme: const InputDecorationTheme(
         border: InputBorder.none,
-
-        // подсказка текста запроса
+        // стиль подсказки текста запроса
         hintStyle: hintTextStyleNormal,
       ),
       backgroundColor:ThemeHandler.primaryColor,
       scaffoldBackgroundColor:ThemeHandler.primaryColor,
     );
   }
+
+  @override
+  String get searchFieldLabel => 'поиск';
 
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -185,11 +181,17 @@ class CustomSearchDelegate extends SearchDelegate {
   Widget buildResults(BuildContext context) {
     // TODO: результаты поиска и сам цикл поиска с учётом фильтра query
     List<String> matchQuery = [];
-    for (var fruit in searchTerms) {
-      if (fruit.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(fruit);
-      }
+    // for (var fruit in searchTerms) {
+    //   if (fruit.toLowerCase().contains(query.toLowerCase())) {
+    //     matchQuery.add(fruit);
+    //   }
+    // }
+
+    for (int i = 0; i < (_questionData.getQuestions.length); i++) {
+      if (_questionData.getQuestions[i].title.toLowerCase().contains(query.toLowerCase()))
+      {matchQuery.add( '${i + 1}. ${_questionData.getQuestions[i].title}' );}
     }
+
     return Container(
         color: ThemeHandler.primaryColor,
         child: ListView.builder(
@@ -197,7 +199,6 @@ class CustomSearchDelegate extends SearchDelegate {
             itemBuilder: (context, index) {
               var result = matchQuery[index];
               return ListTile(
-
                 title: Text(result, style: whiteTextStyleLittle),
               );
             }),
@@ -208,10 +209,14 @@ class CustomSearchDelegate extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     // TODO: результаты по предложениям (аналогично buildResults)
     List<String> matchQuery = [];
-    for (var fruit in searchTerms) {
-      if (fruit.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(fruit);
-      }
+    // for (var fruit in searchTerms) {
+    //   if (fruit.toLowerCase().contains(query.toLowerCase())) {
+    //     matchQuery.add(fruit);
+    //   }
+    // }
+    for (int i = 0; i < (_questionData.getQuestions.length); i++) {
+      if (_questionData.getQuestions[i].title.toLowerCase().contains(query.toLowerCase()))
+      {matchQuery.add('${i + 1}. ${_questionData.getQuestions[i].title}');}
     }
     return Container(
         color: ThemeHandler.primaryColor,
