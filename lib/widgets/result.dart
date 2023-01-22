@@ -118,10 +118,12 @@ class Result extends StatelessWidget {
                         children: [
                           Flexible(
                             flex: 5,
-                            child: FittedBox(
-                              fit: BoxFit.contain,
-                              child: img,
-                            ),
+                            child: img,
+                            //GOT A BUG! Вставка fittedbox внутрь flexible вызывает ошибку
+                            // FittedBox(
+                            //   fit: BoxFit.contain,
+                            //   child: img,
+                            // ),
                           ),
                           Flexible(
                             flex: 1,
