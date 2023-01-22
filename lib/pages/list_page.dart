@@ -3,6 +3,8 @@ import 'package:quiz/models/question.dart';
 import '../theme/theme_handler.dart';
 import 'answers_page.dart';
 
+final QuestionData questionData = QuestionData();
+
 class RowQuestion extends StatelessWidget {
   final int index;
   final String caption;
@@ -61,31 +63,44 @@ class RowQuestion extends StatelessWidget {
   }
 }
 
-class ListPage extends StatefulWidget {
-  const ListPage({super.key});
+List<Widget> _createList([String sQuery = '']) {
+List<Widget> listQuestion = [];
 
-  @override
-  State<ListPage> createState() => _ListPageState();
+void add2ListQuestion (int i)
+{
+  listQuestion.add(DefaultTextStyle.merge(
+      style: whiteTextStyleLittle,
+      child: RowQuestion(
+        index: i,
+        caption: questionData.getQuestions[i].title,
+        answers: [...questionData.getQuestions[i].answers],
+      )));
 }
 
-class _ListPageState extends State<ListPage> {
-  final QuestionData _questionData = QuestionData();
-  List<Widget> listQuestion = [];
+if (sQuery == '')
+  {
+    for (int i = 0; i < (questionData.getQuestions.length); i++) {
+      add2ListQuestion(i);
+    }
+  }
+else {
+  for (int i = 0; i < (questionData.getQuestions.length); i++) {
+    if (questionData.getQuestions[i].title.toLowerCase().contains(sQuery.toLowerCase()))
+    {      add2ListQuestion(i);
+    }
 
-  //String s = 'default text';
+  }
+}
+return listQuestion;
+}
+
+class ListPage extends StatelessWidget {
+  ListPage({super.key});
+
+  final List<Widget> listQuestion = _createList();
 
   @override
   Widget build(BuildContext context) {
-    for (int i = 0; i < (_questionData.getQuestions.length); i++) {
-      listQuestion.add(DefaultTextStyle.merge(
-          style: whiteTextStyleLittle,
-          child: RowQuestion(
-            index: i,
-            caption: _questionData.getQuestions[i].title,
-            answers: [..._questionData.getQuestions[i].answers],
-          )));
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: DefaultTextStyle.merge(
@@ -110,29 +125,28 @@ class _ListPageState extends State<ListPage> {
           ),
         ),
       ),
-      body: Container(
-          color: Theme.of(context).primaryColor,
-          child: ListView(
-            itemExtent: 65,
-            children: listQuestion,
-          )),
+      body: MakeList(listQuestion: [...listQuestion],),
     );
   }
 }
 
-class CustomSearchDelegate extends SearchDelegate {
-  // List<String> searchTerms = [
-  //   'Apple',
-  //   'Banana',
-  //   'Pear',
-  //   'Watermelons',
-  //   'Oranges',
-  //   'Blueberries',
-  //   'Strawberries',
-  //   'Raspberries',
-  // ];
+class MakeList extends StatelessWidget {
+  final List<Widget> listQuestion;
+  const MakeList({required this.listQuestion, Key? key}) : super(key: key);
 
-  final QuestionData _questionData = QuestionData();
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: ThemeHandler.primaryColor,
+        child: ListView(
+          itemExtent: 65,
+          children: listQuestion,
+        ));
+  }
+}
+
+
+class CustomSearchDelegate extends SearchDelegate {
 
   @override
   ThemeData appBarTheme(BuildContext context) {
@@ -180,54 +194,18 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     // TODO: результаты поиска и сам цикл поиска с учётом фильтра query
-    List<String> matchQuery = [];
-    // for (var fruit in searchTerms) {
-    //   if (fruit.toLowerCase().contains(query.toLowerCase())) {
-    //     matchQuery.add(fruit);
-    //   }
-    // }
+    List<Widget> listQuestion = _createList(query);
 
-    for (int i = 0; i < (_questionData.getQuestions.length); i++) {
-      if (_questionData.getQuestions[i].title.toLowerCase().contains(query.toLowerCase()))
-      {matchQuery.add( '${i + 1}. ${_questionData.getQuestions[i].title}' );}
-    }
-
-    return Container(
-        color: ThemeHandler.primaryColor,
-        child: ListView.builder(
-            itemCount: matchQuery.length,
-            itemBuilder: (context, index) {
-              var result = matchQuery[index];
-              return ListTile(
-                title: Text(result, style: whiteTextStyleLittle),
-              );
-            }),
-    );
+    return
+      MakeList(listQuestion: [...listQuestion],);
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     // TODO: результаты по предложениям (аналогично buildResults)
-    List<String> matchQuery = [];
-    // for (var fruit in searchTerms) {
-    //   if (fruit.toLowerCase().contains(query.toLowerCase())) {
-    //     matchQuery.add(fruit);
-    //   }
-    // }
-    for (int i = 0; i < (_questionData.getQuestions.length); i++) {
-      if (_questionData.getQuestions[i].title.toLowerCase().contains(query.toLowerCase()))
-      {matchQuery.add('${i + 1}. ${_questionData.getQuestions[i].title}');}
-    }
-    return Container(
-        color: ThemeHandler.primaryColor,
-        child: ListView.builder(
-            itemCount: matchQuery.length,
-            itemBuilder: (context, index) {
-              var result = matchQuery[index];
-              return ListTile(
-                title: Text(result, style: whiteTextStyleLittle),
-              );
-            }),
-    );
+    List<Widget> listQuestion = _createList(query);
+
+    return
+      MakeList(listQuestion: [...listQuestion],);
   }
 }

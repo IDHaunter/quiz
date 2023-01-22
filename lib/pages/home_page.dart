@@ -5,30 +5,15 @@ import 'package:quiz/widgets/quiz.dart';
 import 'package:quiz/widgets/result.dart';
 import '../theme/theme_handler.dart';
 
-/*class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Тестирование'),
-      ),
-      body: Container(
-        child: const Center(
-          child: Text('Что-то тут будет...'),
-        ),
-      ),
-    );
-  }
-}*/
-
 // Декларативный подход
 // UI = f (state)
-// где f - это buid методы виджетов, а state - состояние
+// где f - это build методы виджетов, а state - состояние
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
-  _HomePageState createState() => _HomePageState();
-//createState() => _HomePageState();
+  createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {

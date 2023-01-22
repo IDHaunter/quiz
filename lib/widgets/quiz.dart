@@ -29,7 +29,6 @@ class Quiz extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 10, top: 20, right: 10, bottom: 20),
                 child: Text(
                   questionData.getQuestions[index].title,
-                  //style: Theme.of(context).textTheme.caption,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -84,7 +83,6 @@ class Quiz extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 10, top: 0, right: 10, bottom: 0),
                 child: Text(
                   questionData.getQuestions[index].title,
-                  //style: Theme.of(context).textTheme.caption,
                   textAlign: TextAlign.center,
                 ),
               ),
