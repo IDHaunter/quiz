@@ -54,27 +54,34 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              // SizedBox(
-              //   width: 44,
-              // ),
               IconButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/info_page');
                   },
                   icon: const Icon(
                     Icons.info_outline,
-                    color: Colors.white,
+                    color: ThemeHandler.mainIconColor,
                   )),
+               const SizedBox(
+                 width: 44,
+               ),
 
               const Expanded(child: Text('Тестирование', textAlign: TextAlign.center)),
-              //Icon(Icons.list_alt_rounded, color: Colors.white,),
+              IconButton(
+                  onPressed: () {
+                    _clearState();
+                  },
+                  icon: const Icon(
+                    Icons.restart_alt ,
+                    color: ThemeHandler.mainIconColor,
+                  )),
               IconButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/list_page');
                   },
                   icon: const Icon(
                     Icons.list_alt_rounded,
-                    color: Colors.white,
+                    color: ThemeHandler.mainIconColor,
                   )),
             ],
           ),

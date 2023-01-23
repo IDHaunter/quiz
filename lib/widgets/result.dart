@@ -76,7 +76,7 @@ class Result extends StatelessWidget {
                 color: ThemeHandler.mainTextColor,
               ),
               ElevatedButton(
-                onPressed: onClearState, //без скобок значит не вызываем а просто передаём чтобы вызвать потом по нажатию
+                onPressed: onClearState, //без скобок значит не вызываем а просто передаём callback из конструктора чтобы вызвать потом
                 child: const Text('Повторить тест'),
               )
             ],
