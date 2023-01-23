@@ -1,6 +1,7 @@
 # quiz
 This project helped me learn Flutter and Dart.
 Thanks CodeAndArt youtube channel, my deepest respects to the author!
+You can create your own quiz just changing model in question.dart
 
 ## A few standard resources to get started:
 
