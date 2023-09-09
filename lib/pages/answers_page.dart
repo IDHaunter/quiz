@@ -31,9 +31,9 @@ class AnswersPage extends StatelessWidget {
       appBar: AppBar(
         title: DefaultTextStyle.merge(
           style: whiteTextStyleBig,
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: const [
+            children: [
               Expanded(child: Text('Список ответов', textAlign: TextAlign.center)),
               SizedBox(
                 width: 44,

@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
 //Все функции, переменные и параметры рекомендуется начинать с маленькой буквы
 //но все слова далее писать с большой
 
 //Переменные в тексте юнита это top level переменные
 var fullname = '';
-final String firstname = 'Crazy'; //иницализируется единожды при присвоении
+const String firstname = 'Crazy'; //иницализируется единожды при присвоении
 const String anyname = 'Any Crazy'; //инициализируется при компиляции
 //dynamic - тип способный менять тип переменной многократно
 // и вариант не инициализировать переменную и допускать null и проблемы с ним
@@ -16,7 +15,7 @@ String secondname='';
 //? - указывает на то что переменна может быть null
 //!- это инструкция для компилятора не проверять переменную на Null
 // (типа мы очень уверены что она не Null)
- int getIntValue(int? value) {value=123; return value!;}
+ int getIntValue(int? value) {value=123; return value;}
 //?? - используется для проверки на null ( print(value ?? 0) ) типа если Null то 0
 //if (value == null) { return 0;} - аналог
 //return value == null ? 0 : value; - ещё аналог
@@ -48,7 +47,7 @@ void converting() {
   int b=2;
   String s='6';
   b= int.parse(s);
-  print('Count is ' + (a+b).toString()  );
+  print('Count is ${a+b}'  );
   print('Count is ${a+b}'  );
   //Округление
   print(3.14159.toStringAsFixed(2));
@@ -62,8 +61,8 @@ void converting() {
 void testfunc() {
   var list =[3,2,1]; //набор не уникальных элементов переменного типа
   //в переменную передаём функцию
-  var toup = (value) => '${value.toUpperCase()}';
-  var toup2 = (String ss) {return ss.toUpperCase(); };
+  toup(value) => '${value.toUpperCase()}';
+  toup2(String ss) {return ss.toUpperCase(); }
 
   print(toup('fuckin shit happens 1'));
   print(toup2('fuckin shit happens 2'));
@@ -87,7 +86,7 @@ void testfunc() {
     return value.toString();
   }
   //Через анонимную функцию
-  list.forEach((element) {print(element);});
+  for (var element in list) {print(element);}
   //Через функцию переданную в качестве параметра
   //list.forEach(print); //стандартная функция
   //list.forEach(printValue); //своя функция
@@ -102,7 +101,7 @@ void testfunc() {
 
 //Функция с необязательными параметры
 // _ - указатель будет значить что функция видна внутри юнита
-void _say_hello (String name, String msg, [String device = '', bool correct =false]){
+void _say_hello (String name, String msg, [bool correct =false]){
 
   List anyMyList = [1,'asd',1,'asd']; //набор не уникальных не типизированных элементов
   anyMyList.add(1);
@@ -123,7 +122,7 @@ void _say_hello (String name, String msg, [String device = '', bool correct =fal
   Set<String> names = {'bam','crash'}; //набор уникальных элементов
   names.add('boom');
 
-  Map<String, String> my_map ={ //набор значение - значение
+  Map<String, String> myMap ={ //набор значение - значение
     'k1': 'Minsk',
     'k2': 'Gomel',
     'k3': 'Brest',
@@ -132,15 +131,17 @@ void _say_hello (String name, String msg, [String device = '', bool correct =fal
   //Spread - оператор
   //Оператор (...) или с поддержкой значений Null (...?) служит
   //для добавления к множеству множества
-  List<int> constant_list = const [1, 2, 3];
-  List<int> var_list = [1, 2, 3, if (correct) ...constant_list else
+  List<int> constantList = const [1, 2, 3];
+  List<int> varList = [1, 2, 3, if (correct) ...constantList else
     4, 5, 6];
-  List<int> result_list = [...constant_list, ...var_list];
+  List<int> resultList = [...constantList, ...varList];
 
   //Через анонимную функцию
   //var_list.forEach((element) {print(element)});
   //Через стрелочную функцию
-  result_list.forEach((element) => print(element));
+  for (var element in resultList) {
+    print(element);
+  }
 
 }
 
@@ -152,7 +153,7 @@ void taskFindInList() {
   Set<int> S1 = {};
   Set<int> S2 = {};
 
-  print("Toatl items = " + L1.length.toString());
+  print("Toatl items = ${L1.length}");
 
   // print(L1[1]);
   for (int i=0; i<(L1.length); i++){

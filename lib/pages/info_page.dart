@@ -10,9 +10,9 @@ class InfoPage extends StatelessWidget {
       appBar: AppBar(
         title: DefaultTextStyle.merge(
           style: whiteTextStyleBig,
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Expanded(child: Text('Информация', textAlign: TextAlign.center)),
               SizedBox(
                 width: 44,
@@ -49,20 +49,20 @@ class InfoPage extends StatelessWidget {
                 style: purpleTextStyleNormal,
               ),
             ),
-            Expanded(
+            const Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
                     '',
                   )
                 ],
               ),
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Stack(alignment: Alignment.bottomRight, children: const [
+                Stack(alignment: Alignment.bottomRight, children: [
                   Image(image: AssetImage('assets/images/lis_purple.png')),
                   Opacity(
                     opacity: 0.5,
@@ -74,9 +74,9 @@ class InfoPage extends StatelessWidget {
                 ]),
               ],
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
+              children: [
                 SizedBox(
                   width: 5, height: 5,
                 ),

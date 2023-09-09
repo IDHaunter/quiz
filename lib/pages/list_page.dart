@@ -10,7 +10,12 @@ class RowQuestion extends StatelessWidget {
   final String caption;
   final List<Map<String, String>> answers;
 
-  const RowQuestion({required this.index, required this.caption, required this.answers, Key? key}) : super(key: key);
+  const RowQuestion(
+      {required this.index,
+      required this.caption,
+      required this.answers,
+      Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +29,13 @@ class RowQuestion extends StatelessWidget {
               Flexible(
                 fit: FlexFit.tight, //tight - на всё пространство элемента
                 child: Container(
-                  padding: const EdgeInsets.only(left: 15, right: 5, top: 0, bottom: 3),
+                  padding: const EdgeInsets.only(
+                      left: 15, right: 5, top: 0, bottom: 3),
                   child: Text(
                     '${index + 1}. $caption',
                     softWrap: true, //работает перенос на новую строку
-                    overflow: TextOverflow.fade, //при переполнении текст будет таять
+                    overflow:
+                        TextOverflow.fade, //при переполнении текст будет таять
                   ),
                 ),
               ),
@@ -64,34 +71,32 @@ class RowQuestion extends StatelessWidget {
 }
 
 List<Widget> _createList([String sQuery = '']) {
-List<Widget> listQuestion = [];
+  List<Widget> listQuestion = [];
 
-void add2ListQuestion (int i)
-{
-  listQuestion.add(DefaultTextStyle.merge(
-      style: whiteTextStyleLittle,
-      child: RowQuestion(
-        index: i,
-        caption: questionData.getQuestions[i].title,
-        answers: [...questionData.getQuestions[i].answers],
-      )));
-}
+  void add2ListQuestion(int i) {
+    listQuestion.add(DefaultTextStyle.merge(
+        style: whiteTextStyleLittle,
+        child: RowQuestion(
+          index: i,
+          caption: questionData.getQuestions[i].title,
+          answers: [...questionData.getQuestions[i].answers],
+        )));
+  }
 
-if (sQuery == '')
-  {
+  if (sQuery == '') {
     for (int i = 0; i < (questionData.getQuestions.length); i++) {
       add2ListQuestion(i);
     }
-  }
-else {
-  for (int i = 0; i < (questionData.getQuestions.length); i++) {
-    if (questionData.getQuestions[i].title.toLowerCase().contains(sQuery.toLowerCase()))
-    {      add2ListQuestion(i);
+  } else {
+    for (int i = 0; i < (questionData.getQuestions.length); i++) {
+      if (questionData.getQuestions[i].title
+          .toLowerCase()
+          .contains(sQuery.toLowerCase())) {
+        add2ListQuestion(i);
+      }
     }
-
   }
-}
-return listQuestion;
+  return listQuestion;
 }
 
 class ListPage extends StatelessWidget {
@@ -108,10 +113,13 @@ class ListPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const Expanded(child: Text('Список всех вопросов', textAlign: TextAlign.center)),
+              const Expanded(
+                  child: Text('Список всех вопросов',
+                      textAlign: TextAlign.center)),
               IconButton(
                 onPressed: () {
-                  showSearch(context: context, delegate: CustomSearchDelegate());
+                  showSearch(
+                      context: context, delegate: CustomSearchDelegate());
                 },
                 icon: const Icon(
                   Icons.search,
@@ -125,7 +133,9 @@ class ListPage extends StatelessWidget {
           ),
         ),
       ),
-      body: MakeList(listQuestion: [...listQuestion],),
+      body: MakeList(
+        listQuestion: [...listQuestion],
+      ),
     );
   }
 }
@@ -145,14 +155,14 @@ class MakeList extends StatelessWidget {
   }
 }
 
-
 class CustomSearchDelegate extends SearchDelegate {
-
   @override
   ThemeData appBarTheme(BuildContext context) {
     //return Theme.of(context);
     return ThemeData(
-      textTheme: Theme.of(context).textTheme.copyWith(headline6: whiteTextStyleNormal),
+      textTheme: Theme.of(context)
+          .textTheme
+          .copyWith(titleLarge: whiteTextStyleNormal),
       appBarTheme: const AppBarTheme(
         backgroundColor: ThemeHandler.primarySwatchColor,
       ),
@@ -161,8 +171,10 @@ class CustomSearchDelegate extends SearchDelegate {
         // стиль подсказки текста запроса
         hintStyle: hintTextStyleNormal,
       ),
-      backgroundColor:ThemeHandler.primaryColor,
-      scaffoldBackgroundColor:ThemeHandler.primaryColor,
+      scaffoldBackgroundColor: ThemeHandler.primaryColor,
+      colorScheme: ColorScheme.fromSeed(
+          seedColor: ThemeHandler
+              .primaryColor), //(background: ThemeHandler.primaryColor, brightness: Brightness.dark),
     );
   }
 
@@ -196,8 +208,9 @@ class CustomSearchDelegate extends SearchDelegate {
     // TODO: результаты поиска и сам цикл поиска с учётом фильтра query
     List<Widget> listQuestion = _createList(query);
 
-    return
-      MakeList(listQuestion: [...listQuestion],);
+    return MakeList(
+      listQuestion: [...listQuestion],
+    );
   }
 
   @override
@@ -205,7 +218,8 @@ class CustomSearchDelegate extends SearchDelegate {
     // TODO: результаты по предложениям (аналогично buildResults)
     List<Widget> listQuestion = _createList(query);
 
-    return
-      MakeList(listQuestion: [...listQuestion],);
+    return MakeList(
+      listQuestion: [...listQuestion],
+    );
   }
 }

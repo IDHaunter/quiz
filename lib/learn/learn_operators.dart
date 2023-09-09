@@ -144,9 +144,9 @@ void testAssign()
   // ?? - null operator
   // возвращает левое выражение если оно не Null
   print(0 ?? 1);  // 0
-  print(1 ?? null);  // 1
-  print(null ?? null); // null
-  print(null ?? null ?? 2); // 2
+  print(1);  // 1
+  print(null); // null
+  print(2); // 2
 
   // Assigning value to variable d
   int? d;

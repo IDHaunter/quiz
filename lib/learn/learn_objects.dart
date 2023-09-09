@@ -1,6 +1,5 @@
 //пакет с математическими операциями
 import 'dart:math';
-import 'dart:ui';
 
 //Объекты и классы
 class Rectangle {
@@ -31,8 +30,8 @@ class Paladin {
 
   //Двойной конструктор (дополнительный вариант к основному)
   Paladin.darkknight({this.level=0}) {
-  this.atack = level + 10;
-  this.defense = level + 5;
+  atack = level + 10;
+  defense = level + 5;
   }
 
   //Двойной конструктор с инициализацией (это указывается через две точки :) через доп. переменные
@@ -78,6 +77,7 @@ abstract class AbstractClass {
 
 //можем использовать наследование для абстрактных классов но только один
 class MyAbstractClass extends AbstractClass {
+  @override
   void abstractMethod() {
     print('Abstract method have called');
   }
@@ -92,7 +92,9 @@ class Person {
 }
 // и под этот класс мы пишем интерфейс используя ключевое слово implements
 class Impostor implements Person {
+  @override
   get _name => '';
+  @override
   String greet(String who) => 'Дарова, $who';
 }
 
@@ -124,6 +126,7 @@ class Vector {
   Vector operator - (Vector v) => Vector(x-v.x, y-v.y);
 
   //перехват обработчика внутри класса
+  @override
   void noSuchMethod (Invocation inv) {
     print('Вы пытаетесь использовать нереализованный метод ${inv.memberName} ');
   }

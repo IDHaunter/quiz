@@ -1,10 +1,10 @@
-import 'package:quiz/test/test_functions.dart';
+import 'package:quiz/learn/learn_functions.dart';
 // Асинхронный код
 // Все асинхронные операции в дарт возвращают тип Future
 // При желании можно указать Generic
 //Future<int> getDataFromServer() async {
 Future getDataFromServer() async {
-  var data = await hackingServer();
+  var data = hackingServer();
 }
 
 int hackingServer() =>  1+3;
@@ -34,7 +34,7 @@ void task1() {
 }
 
 Future<String> task2() async {
-  await Future.delayed(Duration(seconds:3), () {
+  await Future.delayed(const Duration(seconds:3), () {
   String result = 'task 2 data';
   print('task2 Done');
   });
@@ -50,7 +50,7 @@ void task3(String task2Data) {
 
 //Есть ещё способ асинхронной работы - потоки Stream ***************************
 void doItInStream () async {
-  Duration interval = Duration(seconds: 1);
+  Duration interval = const Duration(seconds: 1);
   Stream<int> stream$ = Stream<int>.periodic(interval, (x) => (x+1)*2);
   //задаём сколько поток будет эмитить события
   stream$ = stream$.take(5);

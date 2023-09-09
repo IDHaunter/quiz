@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
 
 class MyFlex extends StatelessWidget {
+  const MyFlex({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Вёрстка теория'),
+        title: const Text('Вёрстка теория'),
       ),
       body: Container(
         color: Colors.grey,
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             BiggerColorBox(),
             Flexible(
               //То что внутри ужимается до размера оставшегося экрана
-              child: ColorBox(),
               fit: FlexFit.loose, //loose - по умолчанию, значит не больше совего размера
               flex:
-                  1, //1-это значение по умолчанию, означает что элемент растягивается на всё пространство в равных долях.
+                  1,
+              //То что внутри ужимается до размера оставшегося экрана
+              child: ColorBox(), //1-это значение по умолчанию, означает что элемент растягивается на всё пространство в равных долях.
             ),
             Flexible(
-              child: ColorBox(),
               fit: FlexFit.tight, //tight - на всё пространство элемента
               flex: 1,
+              child: ColorBox(),
             ),
             //SizedBox - Используется обычно для задания расстояния между соседними виджетами
             // SizedBox(
@@ -35,7 +38,7 @@ class MyFlex extends StatelessWidget {
             //   child: ColorBox(),
             // ),
             //Spacer - это тот же SizedBox но с параметром flex вместо ширины
-            const Spacer(
+            Spacer(
               flex: 1,
             ),
             //Expanded это Flexible без свойства fit (оно как бы tight)
@@ -52,11 +55,13 @@ class MyFlex extends StatelessWidget {
 
 //Текст, иконка, картинка
 class MyFlexTextIconPic extends StatelessWidget {
+  const MyFlexTextIconPic({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Вёрстка теория'),
+        title: const Text('Вёрстка теория'),
       ),
       body: Container(
         color: Colors.grey,
@@ -75,7 +80,7 @@ class MyFlexTextIconPic extends StatelessWidget {
                   //TextOverflow.visible - будет переть за границы
                   //TextOverflow.ellipsis - Троеточие ...
                 )),
-            Icon(
+            const Icon(
               Icons.favorite,
               size: 50,
               color: Colors.redAccent,
@@ -93,6 +98,8 @@ class MyFlexTextIconPic extends StatelessWidget {
 }
 
 class ColorBox extends StatelessWidget {
+  const ColorBox({super.key});
+
 //  const ({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -110,6 +117,8 @@ class ColorBox extends StatelessWidget {
 }
 
 class BiggerColorBox extends StatelessWidget {
+  const BiggerColorBox({super.key});
+
 //  const ({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -126,11 +135,13 @@ class BiggerColorBox extends StatelessWidget {
 
 //Всё сразу из предыдущих уроков )))
 class MyFlexMultiple extends StatelessWidget {
+  const MyFlexMultiple({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Вёрстка теория'),
+        title: const Text('Вёрстка теория'),
       ),
       body: Column(
         children: [Container(
@@ -150,7 +161,7 @@ class MyFlexMultiple extends StatelessWidget {
                     //TextOverflow.visible - будет переть за границы
                     //TextOverflow.ellipsis - Троеточие ...
                   )),
-              Icon(
+              const Icon(
                 Icons.favorite,
                 size: 50,
                 color: Colors.redAccent,
@@ -165,22 +176,23 @@ class MyFlexMultiple extends StatelessWidget {
         ),
           Container(
             color: Colors.grey,
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 BiggerColorBox(),
                 Flexible(
                   //То что внутри ужимается до размера оставшегося экрана
-                  child: ColorBox(),
                   fit: FlexFit
                       .loose, //loose - по умолчанию, значит не больше совего размера
                   flex:
-                  1, //1-это значение по умолчанию, означает что элемент растягивается на всё пространство в равных долях.
+                  1,
+                  //То что внутри ужимается до размера оставшегося экрана
+                  child: ColorBox(), //1-это значение по умолчанию, означает что элемент растягивается на всё пространство в равных долях.
                 ),
                 Flexible(
-                  child: ColorBox(),
                   fit: FlexFit.tight, //tight - на всё пространство элемента
                   flex: 1,
+                  child: ColorBox(),
                 ),
                 //SizedBox - Используется обычно для задания расстояния между соседними виджетами
                 // SizedBox(
@@ -197,8 +209,8 @@ class MyFlexMultiple extends StatelessWidget {
                 ),
                 //Expanded это Flexible без свойства fit (оно как бы tight)
                 Expanded(
-                  child: ColorBox(),
                   flex: 1,
+                  child: ColorBox(),
                 )
               ],
             ),
@@ -215,7 +227,7 @@ class MyFlexMultiple extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(30),
             ),
-            child: Text(
+            child: const Text(
               'CodeAndArt',
               textAlign: TextAlign.right,
             ),
@@ -228,13 +240,13 @@ class MyFlexMultiple extends StatelessWidget {
             //margin: const EdgeInsets.all(30.0),  //отступы снаружи
             //margin: EdgeInsets.fromLTRB(50, 100, 20, 10), //отступы слева-сверху-справа-снизу
             //margin: EdgeInsets.symmetric(vertical: 10, horizontal: 100), //симетрично верх-низ и слева-справа
-            margin: EdgeInsets.only(left: 50), //только с определённой стороны
+            margin: const EdgeInsets.only(left: 50), //только с определённой стороны
             padding: const EdgeInsets.all(50.0), //отступы внутри
             decoration: BoxDecoration(
               //shape: BoxShape.circle,
                 color: Colors.amber[600],
                 border: Border.all()),
-            child: Text(
+            child: const Text(
               'CodeAndArt',
               textAlign: TextAlign.right,
             ),

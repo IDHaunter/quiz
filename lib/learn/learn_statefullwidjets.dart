@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FavoriteWidget extends StatefulWidget {
+  const FavoriteWidget({super.key});
+
   @override
   _FavoriteWidgetState createState() => _FavoriteWidgetState();
 }
@@ -14,7 +16,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
     return Row(
       children: <Widget>[
         Container(
-          child: IconButton(onPressed: _toggleFavorite, icon: _isFavorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border), color: Colors.red,),
+          child: IconButton(onPressed: _toggleFavorite, icon: _isFavorite ? const Icon(Icons.favorite) : const Icon(Icons.favorite_border), color: Colors.red,),
         ) ,
         SizedBox(
           width: 40,
@@ -41,11 +43,13 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
 }
 
 class PersonWidget extends StatelessWidget {
+  const PersonWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Япония, Старшая лига'),
+        title: const Text('Япония, Старшая лига'),
       ),
       body: Container(
         child: _buildMainColumn(),
@@ -89,7 +93,7 @@ class PersonWidget extends StatelessWidget {
   Widget _BuildTopImage() {
     return Container(
       child: Card(
-        margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+        margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
         elevation: 5,
         child: Image.asset(
           'assets/images/goose_640.jpg',
@@ -99,7 +103,7 @@ class PersonWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildRating() => ListTile(
+  Widget _buildRating() => const ListTile(
     title: Text('Гусь необыкновенный', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18), ),
     subtitle: Text('Япония, школа B1'),
     trailing: Row(
@@ -135,7 +139,7 @@ class PersonWidget extends StatelessWidget {
     ],
   );
 
-  Widget _buildDesc() => Text('Гусь могучий и опытный, проходил стажировку в Ираке и Сирии. Способен метать особо тяжёлый бомбы с высот от 10 до 1000 метров. Полезная нагрузка 1 кг, вместимость фюзеляжа 0.7 кг. Один раз можно активировать режим камикадзе, способ задания цели фотографичекий с геолокацией по GPS.',
+  Widget _buildDesc() => const Text('Гусь могучий и опытный, проходил стажировку в Ираке и Сирии. Способен метать особо тяжёлый бомбы с высот от 10 до 1000 метров. Полезная нагрузка 1 кг, вместимость фюзеляжа 0.7 кг. Один раз можно активировать режим камикадзе, способ задания цели фотографичекий с геолокацией по GPS.',
     softWrap: true, style: TextStyle(fontSize: 16.0),);
 
 }

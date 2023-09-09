@@ -7,11 +7,13 @@ import 'package:flutter/material.dart';
 //Ctrl+b - ссылка на исходный код выделенного виджета
 
 class MyContainer extends StatelessWidget {
+  const MyContainer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Контейнер теория'),
+        title: const Text('Контейнер теория'),
       ),
       body: Center(
         child: Container(
@@ -22,13 +24,13 @@ class MyContainer extends StatelessWidget {
           //margin: const EdgeInsets.all(30.0),  //отступы снаружи
           //margin: EdgeInsets.fromLTRB(50, 100, 20, 10), //отступы слева-сверху-справа-снизу
           //margin: EdgeInsets.symmetric(vertical: 10, horizontal: 100), //симетрично верх-низ и слева-справа
-          margin: EdgeInsets.only(left: 50), //только с определённой стороны
+          margin: const EdgeInsets.only(left: 50), //только с определённой стороны
           padding: const EdgeInsets.all(50.0), //отступы внутри
           decoration: BoxDecoration(
               //shape: BoxShape.circle,
               color: Colors.amber[600],
               border: Border.all()),
-          child: Text(
+          child: const Text(
             'CodeAndArt',
             textAlign: TextAlign.right,
           ),
@@ -39,11 +41,13 @@ class MyContainer extends StatelessWidget {
 }
 
 class MyContainerImage extends StatelessWidget {
+  const MyContainerImage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Контейнер теория'),
+        title: const Text('Контейнер теория'),
       ),
       body: Center(
         child: Container(
@@ -58,7 +62,7 @@ class MyContainerImage extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(30),
           ),
-          child: Text(
+          child: const Text(
             'CodeAndArt',
             textAlign: TextAlign.right,
           ),

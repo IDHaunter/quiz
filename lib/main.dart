@@ -8,7 +8,7 @@ import 'pages/home_page.dart';
 //import 'package:quiz/row_column.dart';
 //import 'my-container.dart';
 //import 'my_flexible.dart';
-//import 'test/test_statefullwidjets.dart';
+//import 'learn/learn_statefullwidjets.dart';
 import 'package:flutter/rendering.dart' show debugPaintSizeEnabled; //отслеживание границ
 
 void main() {

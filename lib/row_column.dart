@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
 class MyRowColumn extends StatelessWidget {
+  const MyRowColumn({super.key});
+
   //const MyRowColumn({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Вёрстка теория'),
+        title: const Text('Вёрстка теория'),
       ),
       body: Container(
         color: Colors.grey,
-        child: Row(
+        child: const Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,6 +25,8 @@ class MyRowColumn extends StatelessWidget {
 }
 
 class ColorBox extends StatelessWidget {
+  const ColorBox({super.key});
+
 //  const ({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -38,6 +42,8 @@ class ColorBox extends StatelessWidget {
 }
 
 class BiggerColorBox extends StatelessWidget {
+  const BiggerColorBox({super.key});
+
 //  const ({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
